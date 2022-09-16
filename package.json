@@ -1,0 +1,19 @@
+{
+	"name": "@prokopschield/base64",
+	"description": "URL-safe base-64 with ~ and _",
+	"version": "0.1.0-1",
+	"main": "lib/index.js",
+	"bin": {
+		"base64-encode": "lib/cli-encode.js",
+		"base64-decode": "lib/cli-decode.js"
+	},
+	"scripts": {
+		"build": "pnpm install && tsc"
+	},
+	"author": "Prokop Schield",
+	"devDependencies": {
+		"@types/node": ">=16"
+	},
+	"keywords": [],
+	"license": "GPL-3.0-or-later"
+}
