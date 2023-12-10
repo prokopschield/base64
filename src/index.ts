@@ -1,6 +1,17 @@
 export const alphabet =
 	'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~_';
 
+export const reverse_items = [
+	...[...alphabet].map((item, index) => [item, index]),
+	['+', 62],
+	['-', 62],
+	[',', 63],
+	['_', 63],
+	['/', 63],
+] as [string, number][];
+
+export const reverse = new Map<string, number>(reverse_items);
+
 /**
  * Convert Buffer or Uint8Array to Base-64
  * @param input Byte array being converted
@@ -46,10 +57,10 @@ export function decode(input: string) {
 	const out = Array<number>();
 	let mod = 0;
 	let tmp = 0;
+	let tmp_: number | undefined;
 	for (const chr of input) {
-		tmp += alphabet.includes(chr)
-			? alphabet.indexOf(chr)
-			: chr.charCodeAt(0);
+		tmp_ = reverse.get(chr);
+		tmp += typeof tmp_ === 'number' ? tmp_ : chr.charCodeAt(0);
 		if (mod === 0) {
 			// state: 00000000 00AAAAAA
 		} else if (mod === 1) {
