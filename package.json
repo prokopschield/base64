@@ -8,7 +8,7 @@
 		"base64-decode": "lib/cli-decode.js"
 	},
 	"scripts": {
-		"build": "pnpm install && tsc",
+		"build": "pnpm install && rm -rf lib && tsc",
 		"test": "pnpm build && node --test"
 	},
 	"author": "Prokop Schield",
