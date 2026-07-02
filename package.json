@@ -3,6 +3,7 @@
 	"description": "URL-safe base-64 with ~ and _",
 	"version": "0.1.0-2",
 	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
 	"bin": {
 		"base64-encode": "lib/cli-encode.js",
 		"base64-decode": "lib/cli-decode.js"
