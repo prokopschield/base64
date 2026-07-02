@@ -8,11 +8,13 @@
 		"base64-decode": "lib/cli-decode.js"
 	},
 	"scripts": {
-		"build": "pnpm install && tsc"
+		"build": "pnpm install && tsc",
+		"test": "pnpm build && node --test"
 	},
 	"author": "Prokop Schield",
 	"devDependencies": {
-		"@types/node": "^16.18.68"
+		"@types/node": "^16.18.68",
+		"typescript": "^5.9.3"
 	},
 	"keywords": [],
 	"license": "GPL-3.0-or-later"
