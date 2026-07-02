@@ -13,6 +13,14 @@
 		"test": "pnpm build && node --test"
 	},
 	"author": "Prokop Schield",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/prokopschield/base64.git"
+	},
+	"bugs": {
+		"url": "https://github.com/prokopschield/base64/issues"
+	},
+	"homepage": "https://github.com/prokopschield/base64#readme",
 	"devDependencies": {
 		"@types/node": "^16.18.68",
 		"typescript": "^5.9.3"
