@@ -16,7 +16,7 @@ function flush() {
 		n = i;
 	}
 
-	buffer = buffer.slice(n - chunk_size);
+	buffer = buffer.slice(n);
 }
 
 process.stdin.on('data', (chunk: Buffer) => {

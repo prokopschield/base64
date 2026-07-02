@@ -15,7 +15,7 @@ function flush() {
 		n = i;
 	}
 
-	buffer = buffer.subarray(n - chunk_size);
+	buffer = buffer.subarray(n);
 }
 
 process.stdin.on('data', (chunk: Buffer) => {
