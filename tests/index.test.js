@@ -52,3 +52,27 @@ test('decode() handles URL-safe base64', () => {
 		);
 	}
 });
+
+test('decode() handles padded standard base64', () => {
+	for (let length = 0; length <= 64; ++length) {
+		const input = randomBytes(length);
+		const padded = input.toString('base64');
+
+		assert.deepEqual(
+			decode(padded),
+			new Uint8Array(input),
+			`decode mismatch for ${padded}`,
+		);
+	}
+});
+
+test('decode() handles MIME-wrapped base64', () => {
+	const input = randomBytes(300);
+	const wrapped = input.toString('base64').replace(/(.{76})/g, '$1\r\n');
+
+	assert.deepEqual(decode(wrapped), new Uint8Array(input));
+});
+
+test('decode("TQ==") returns [77]', () => {
+	assert.deepEqual(decode('TQ=='), new Uint8Array([77]));
+});

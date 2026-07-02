@@ -48,7 +48,8 @@ export function encode(input: Uint8Array) {
 /**
  * Convert Base-64 to Uint8Array
  *
- * Only correctly decodes strings from encode()
+ * Decodes output of encode(), as well as standard and URL-safe Base-64,
+ * ignoring padding and whitespace
  *
  * @param input Base-64 string
  * @returns Uint8Array
@@ -59,6 +60,16 @@ export function decode(input: string) {
 	let tmp = 0;
 	let tmp_: number | undefined;
 	for (const chr of input) {
+		if (
+			chr === '=' ||
+			chr === '\n' ||
+			chr === '\r' ||
+			chr === ' ' ||
+			chr === '\t'
+		) {
+			continue;
+		}
+
 		tmp_ = reverse.get(chr);
 		tmp += typeof tmp_ === 'number' ? tmp_ : chr.charCodeAt(0);
 		if (mod === 0) {
