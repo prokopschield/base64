@@ -3,7 +3,7 @@
 import { decode } from '.';
 
 const chunk_size = 80;
-const filter = /[^\w~]/g;
+const filter = /[^\w~+,/=-]/g;
 
 let buffer = String();
 

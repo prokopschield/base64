@@ -44,3 +44,21 @@ test('CLI round trip preserves multi-chunk input', async () => {
 
 	assert.deepEqual(decoded, input);
 });
+
+test('base64-decode accepts padded standard base64', async () => {
+	const input = randomBytes(250);
+	const padded = input.toString('base64');
+
+	const decoded = await run(cli_decode, [padded]);
+
+	assert.deepEqual(decoded, input);
+});
+
+test('base64-decode accepts MIME-wrapped base64', async () => {
+	const input = randomBytes(300);
+	const wrapped = input.toString('base64').replace(/(.{76})/g, '$1\r\n');
+
+	const decoded = await run(cli_decode, [wrapped]);
+
+	assert.deepEqual(decoded, input);
+});
